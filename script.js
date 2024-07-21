@@ -6,45 +6,57 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 const collectEmployees = function() {
 
   // TODO: Get user input to create and return an array of employee objects
- let employees = [];
- let continueAdding = true;
+ let employees = []; // Array to store employee objects
+ let continueAdding = true; // Flag to control the input loop
 
 while (continueAdding) {
+  //Prompt for user to add some employee details
  const firstName = prompt("Enter First Name");
  const lastName = prompt("Enter Last Name");
  const salary = parseFloat(prompt("Enter Salary"));
 
-
+// The employee object for the input data
  const employee ={
   firstName: firstName,
   lastName: lastName,
   salary: salary,
  };
 
+ // Adding the employee object to the employees array
  employees.push(employee);
 
+ // Prompt to ask the user if they would like to add another employee
  continueAdding = confirm("Would you like to add another employee?");
 }
 
-return employees;
+return employees; // Returns the employees araay
 } 
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
   // TODO: Calculate and display the average salary
-let sum = 0;
+let sum = 0; // Variable to hold the sum of all the salaries
+
+// Loop through the employees array to calculate the sum of the salaries
 for (let i = 0; i < employeesArray.length; i++) {
 sum+=employeesArray[i].salary;
 }
+
+//Calculate the average salary
 const average =sum/employeesArray.length;
+
+// Displays the average salary of the employees in the console
 console.log(`The average salary of our employees is $${average.toFixed(2)}`);
 return average;
 }
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
+  // Generates a random index based on the length of the employees array
   const randomIndex = Math.floor(Math.random() * employeesArray.length);
+  // Gets the random employee object using the random index
   const randomEmployee = employeesArray[randomIndex];
+  // Displays the random employee in the console
   console.log(`This weeks random employee winner is ${randomEmployee.firstName} ${randomEmployee.lastName}!`)
 }
 
